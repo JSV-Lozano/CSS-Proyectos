@@ -1,8 +1,22 @@
-.banners {
+body {
+  margin: 0;
+  padding: 0;
   height: 100vh;
-  position: relative;
-  overflow: hidden;
+  font-family: "Jersey 25", serif;
+  background-color: #000;
+  transition: filter 0.7s ease-in-out;
 }
+
+body.fade-out {
+  filter: blur(10px);
+}
+
+.banners {
+  height: 100%;
+  overflow: hidden;
+  transition: opacity 0.7s ease-in-out;
+}
+
 .banners .product {
   width: 500px;
   height: 500px;
@@ -10,12 +24,50 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: 0.7s ease-in-out;
-  -webkit-transition: 0.7s ease-in-out;
-  -moz-transition: 0.7s ease-in-out;
-  -ms-transition: 0.7s ease-in-out;
-  -o-transition: 0.7s ease-in-out;
+  transition: transform 0.7s ease-in-out, --left 0.7s ease-in-out;
   --left: 0px;
+}
+/* .banners .name {
+  width: 100%;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10rem;
+  text-align: center;
+} */
+.infochar {
+  width: 100%;
+  height: 100%;
+  padding-left: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  transition: opacity 0.7s ease-in-out;
+}
+.name {
+  font-size: 5rem;
+  margin: 0;
+  padding: 0;
+}
+.name_vision {
+  display: flex;
+  align-items: center;
+}
+.vision_Char {
+  width: 100px;
+  height: 100px;
+}
+.description {
+  font-size: 1.7rem;
+  width: 30%;
+  min-height: 100px;
+  scroll-behavior: auto;
+  overflow: auto;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-wrap: break-word;
 }
 .banners .product .soda {
   background: var(--url) var(--left) 0, url(img/soda.png);
@@ -25,27 +77,40 @@
   aspect-ratio: 2/4;
   mask-image: url(img/soda.png);
   mask-size: auto 100%;
-  transition: all 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out, opacity 0.7s ease-in-out;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-}
-.banners .product:hover {
-  --left: -550px;
-  transform: translateX(-50%) translateY(-300px) rotate(-10deg);
-  -moz-transform: translateX(-50%) translateY(-300px) rotate(-10deg);
-  -ms-transform: translateX(-50%) translateY(-300px) rotate(-10deg);
-  -o-transform: translateX(-50%) translateY(-300px) rotate(-10deg);
-  -webkit-transform: translateX(-50%) translateY(-300px) rotate(-10deg);
-}
-.banners .product .soda:nth-child(2) {
   opacity: 0;
 }
-.banners .product:hover .soda:nth-child(2) {
+
+.banners .product.animate .soda {
   opacity: 1;
+}
+
+.banners .product.animate {
+  --left: -550px;
+  transform: translateX(-50%) translateY(-300px) rotate(-10deg);
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#prev {
+  width: 40px;
+  left: 10px;
+}
+
+#next {
+  width: 40px;
+  right: 10px;
 }
